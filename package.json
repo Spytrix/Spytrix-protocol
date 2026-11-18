@@ -1,0 +1,17 @@
+{
+  "name": "spytrix",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Spytrix — privacy meets Solana payments",
+  "license": "MIT",
+  "scripts": {
+    "prep": "node scripts/prep-assets.mjs",
+    "build": "node scripts/build.mjs",
+    "verify": "node scripts/verify.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "chain": { "state": "stated", "name": "Solana mainnet", "rpc": "https://solana-rpc.publicnode.com" },
+  "ca": { "state": "absent", "value": null },
+  "x": { "state": "stated", "url": "https://x.com/Spytrix_Fun" },
+  "github": { "state": "absent", "url": null },
+  "market": {
+    "state": "stated",
+    "boosts": "https://api.dexscreener.com/token-boosts/top/v1",
+    "tokens": "https://api.dexscreener.com/tokens/v1/solana/",
+    "ownDex": "https://api.dexscreener.com/latest/dex/tokens/",
+    "ownPump": "https://frontend-api.pump.fun/coins/",
+    "pollMs": 60000,
+    "limit": 10
+  }
+}

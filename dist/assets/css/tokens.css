@@ -1,0 +1,61 @@
+/* ==========================================================================
+   SPYTRIX — design tokens. The ONLY file allowed to contain colour literals.
+   Provenance (all sampled from pixels, 7x7 window median):
+   brand/LOGO SPYTRIX PNG.png   (2000x2000, RGBA colortype 6; opaque twin of the transparent logo)
+     --c-bg        #0d0a15  background at (60,60)
+     --c-ivory     #f7ece4  sclera at (1000,749)
+     --c-orbit     #412865  outer lid stroke at (1004,700)
+     --c-iris      #5b3f86  iris ring, mid (775,1000)
+     --c-iris-hi   #7154a0  iris ring, inner (790,998)
+     --c-amber     #fea22e  iris band at (863,936)
+     --c-shade     #2a1b43  sclera shadow at (624,988)
+     --c-pupil     #2c1c44  pupil at (998,1050)
+   reference/SAMPUL SPYTRIX JPG.jpg.jpeg (1500x500 JPEG, no alpha)
+     --c-lav       #9e8ed2  tagline text, modal of "Privacy" glyph pixels
+   Given by the brief (not sampled):
+     --c-mint      #00ffcc  own-token pulse colour
+   Every surface/line/glow elsewhere is derived with color-mix() from these.
+   ========================================================================== */
+:root {
+  --c-bg: #0d0a15;
+  --c-ivory: #f7ece4;
+  --c-orbit: #412865;
+  --c-iris: #5b3f86;
+  --c-iris-hi: #7154a0;
+  --c-amber: #fea22e;
+  --c-shade: #2a1b43;
+  --c-pupil: #2c1c44;
+  --c-lav: #9e8ed2;
+  --c-mint: #00ffcc;
+
+  /* semantic */
+  --bg: var(--c-bg);
+  --bg-deep: color-mix(in srgb, var(--c-bg) 70%, var(--c-pupil));
+  --surface: color-mix(in srgb, var(--c-shade) 38%, var(--c-bg));
+  --surface-2: color-mix(in srgb, var(--c-shade) 70%, var(--c-bg));
+  --ivory: var(--c-ivory);
+  --ivory-dim: color-mix(in srgb, var(--c-ivory) 78%, var(--c-bg));
+  --muted: var(--c-lav);
+  --dim: color-mix(in srgb, var(--c-lav) 52%, var(--c-bg));
+  --color-accent: var(--c-amber);
+  --amber: var(--c-amber);
+  --amber-bright: color-mix(in srgb, var(--c-amber) 80%, var(--c-ivory));
+  --amber-soft: color-mix(in srgb, var(--c-amber) 13%, transparent);
+  --amber-line: color-mix(in srgb, var(--c-amber) 36%, transparent);
+  --up: var(--c-mint);
+  --down: var(--c-lav);
+  --line: color-mix(in srgb, var(--c-ivory) 9%, transparent);
+  --line-strong: color-mix(in srgb, var(--c-ivory) 18%, transparent);
+  --shadow: color-mix(in srgb, var(--c-bg) 60%, transparent);
+  --on-amber: var(--c-bg);
+
+  --f-display: "Syne", sans-serif;
+  --f-serif: "Instrument Serif", Georgia, serif;
+  --f-sans: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --f-mono: "Azeret Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --wrap: 1240px;
+  --nav-h: 76px;
+  --hdr-h: 150px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

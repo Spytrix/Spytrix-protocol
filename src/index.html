@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spytrix — Privacy Meets Solana Payments</title>
+<meta name="description" content="Spytrix is a privacy layer for Solana payments: settle with anyone without handing them the map to everything else you own.">
+<meta property="og:title" content="Spytrix — Privacy Meets Solana Payments">
+<meta property="og:description" content="Settle across Solana without publishing your whole financial footprint.">
+<meta property="og:url" content="https://spytrix.fun">
+<meta property="og:image" content="https://spytrix.fun/assets/img/banner.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/logo-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>
+(function(){var d=document.documentElement;if(!matchMedia("(prefers-reduced-motion: reduce)").matches){d.classList.add("anim");setTimeout(function(){d.classList.remove("anim")},5000);}})();
+</script>
+<noscript><style>html.anim .reveal{opacity:1}</style></noscript>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><i></i></div>
+
+<header class="top" id="top">
+  <div class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#hero" aria-label="Spytrix home">
+        <img src="assets/img/logo-128.png" srcset="assets/img/logo-128.png 1x, assets/img/logo-512.png 3x" alt="Spytrix eye mark" width="44" height="44">
+        <span class="brand-word">Spytrix</span>
+      </a>
+      <nav class="nav-links" id="navlinks" aria-label="Primary">
+        <a href="#board">Market</a>
+        <a href="#exposure">Exposure</a>
+        <a href="#method">Method</a>
+        <a href="#phases">Phases</a>
+      </nav>
+      <div class="nav-cta">
+<!--@socials-->
+        <button class="burger" type="button" id="burger" aria-label="Menu" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+  </div>
+<!--@ca-->
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <canvas id="veil" class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-band" id="band" aria-hidden="true"></div>
+    <div class="mesh" aria-hidden="true"><i class="layer" data-depth="0.4"></i><i class="layer" data-depth="0.7"></i><i class="layer" data-depth="1"></i></div>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill reveal" id="heroPill" data-state="loading"><span class="dot"></span><span id="heroPillText">Connecting to the market</span></span>
+        <h1 class="reveal">Pay freely.<br><span class="serif">Stay beyond sight.</span></h1>
+        <p class="lead reveal"><b>Spytrix</b> is a privacy layer for Solana payments. Counterparties settle with you, not with your whole past &mdash; every transfer follows a route that outsiders cannot stitch back to the account you actually live from.</p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-amber" href="#method">See how it works &rarr;</a>
+          <a class="btn btn-ivory" href="#board">Watch the market</a>
+        </div>
+      </div>
+      <aside class="lens reveal spot" aria-label="Spytrix at a glance">
+        <div class="lens-stage">
+          <span class="ring r1 layer" data-depth="0.5"></span>
+          <span class="ring r2 layer" data-depth="0.8"></span>
+          <img class="layer" data-depth="1.4" src="assets/img/logo-512.png" alt="Spytrix eye mark" width="190" height="190">
+        </div>
+        <div class="lens-rows">
+          <div class="lens-row"><div><div class="lbl">Sender</div><div class="val">Main account stays private</div></div></div>
+          <div class="lens-row hot"><div><div class="lbl">Route</div><div class="val amber">Detoured, split, sealed</div></div><span class="tag">UNTRACEABLE</span></div>
+          <div class="lens-row"><div><div class="lbl">Receiver</div><div class="val">Gets paid, learns nothing more</div></div></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="ticker"></div></div>
+
+  <section id="board">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="sec-kicker">01 &middot; Market Board</span>
+          <h2>The tape never sleeps. <span class="serif">Neither do we.</span></h2>
+        </div>
+        <p class="sec-note">The busiest Solana tokens right now, pulled straight from public order flow. Our own line sits on top the moment it exists.</p>
+      </div>
+      <div class="board reveal" id="boardBox">
+        <div class="board-bar">
+          <span class="pill" id="boardPill" data-state="loading"><span class="dot"></span><span id="boardPillText">Loading</span></span>
+          <span class="board-msg" id="boardMsg" role="status"></span>
+        </div>
+        <div class="cols" aria-hidden="true"><span>#</span><span>Token</span><span class="r">Price</span><span class="r">24h</span><span class="r">Volume</span><span class="r">Liquidity</span></div>
+        <div id="rows" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="exposure">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="sec-kicker">02 &middot; Exposure</span>
+          <h2>One payment can <span class="serif">publish your whole ledger.</span></h2>
+        </div>
+        <p class="sec-note">The chain runs quickly yet keeps every receipt on display. Settle an invoice or close a private deal and both parties are linked for anyone with an explorer tab and spare time.</p>
+      </div>
+      <div class="graph-compare">
+        <div class="graph-box reveal spot">
+          <span class="graph-tag bad">Plain transfer</span>
+          <h3>Everything is one click away</h3>
+          <p>Scrapers, mirror traders and curious counterparties follow the payment straight into your holdings and your past.</p>
+          <svg class="dgm" viewBox="0 0 500 170" role="img" aria-label="Plain transfer links sender and receiver directly">
+            <rect class="box warn" x="14" y="54" width="132" height="62" rx="10"/>
+            <text class="t1" x="80" y="81" text-anchor="middle">SENDER</text>
+            <text class="tw" x="80" y="99" text-anchor="middle">Fully visible</text>
+            <line class="ln-bad flow" x1="146" y1="85" x2="354" y2="85"/>
+            <rect class="box warn" x="195" y="69" width="110" height="32" rx="6"/>
+            <text class="tw" x="250" y="89" text-anchor="middle">DIRECT TIE</text>
+            <rect class="box warn" x="354" y="54" width="132" height="62" rx="10"/>
+            <text class="t1" x="420" y="81" text-anchor="middle">RECEIVER</text>
+            <text class="tw" x="420" y="99" text-anchor="middle">Fully visible</text>
+          </svg>
+        </div>
+        <div class="graph-box good reveal spot">
+          <span class="graph-tag ok">Spytrix route</span>
+          <h3>The path ends at a locked door</h3>
+          <p>Funds travel through hops that carry no signature of yours, then arrive where you can use them without a visible parent.</p>
+          <svg class="dgm" viewBox="0 0 500 170" role="img" aria-label="Spytrix route breaks the link between sender and receiver">
+            <rect class="box" x="14" y="54" width="112" height="62" rx="10"/>
+            <text class="t1" x="70" y="82" text-anchor="middle">SENDER</text>
+            <text class="t2" x="70" y="99" text-anchor="middle">Signs once</text>
+            <line class="ln-hub" x1="126" y1="85" x2="188" y2="85"/>
+            <rect class="box hub" x="188" y="24" width="124" height="122" rx="12"/>
+            <text class="tw" x="250" y="68" text-anchor="middle">SPYTRIX</text>
+            <text class="t1" x="250" y="88" text-anchor="middle">Hop and split</text>
+            <text class="tg" x="250" y="108" text-anchor="middle">Link cut</text>
+            <line class="ln-ok flow" x1="312" y1="85" x2="374" y2="85"/>
+            <rect class="box safe" x="374" y="54" width="112" height="62" rx="10"/>
+            <text class="t1" x="430" y="82" text-anchor="middle">RECEIVER</text>
+            <text class="tg" x="430" y="99" text-anchor="middle">No parent seen</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="method">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="sec-kicker">03 &middot; Method</span>
+          <h2>Look first. <span class="serif">Leave nothing behind.</span></h2>
+        </div>
+      </div>
+      <div class="g3">
+        <article class="card spot reveal">
+          <div class="card-idx"><span>LAYER 01</span><span>SEE</span></div>
+          <h3>Lens</h3>
+          <p>Before a single lamport moves, Lens shows what a stranger could learn from the payment you are about to make, so you decide with open eyes.</p>
+        </article>
+        <article class="card spot reveal">
+          <div class="card-idx"><span>LAYER 02</span><span>BEND</span></div>
+          <h3>Detour</h3>
+          <p>Value is broken into pieces and sent along separate paths that never share a signer with the account you hold most in. Each piece looks like unrelated noise.</p>
+        </article>
+        <article class="card spot reveal">
+          <div class="card-idx"><span>LAYER 03</span><span>CLOSE</span></div>
+          <h3>Seal</h3>
+          <p>Pieces converge at an address built for this one purpose. The receiver spends freely and the chain records a clean arrival with no visible origin.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="phases">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="sec-kicker">04 &middot; Phases</span>
+          <h2>Four steps, <span class="serif">one direction.</span></h2>
+        </div>
+        <p class="sec-note">Sequenced by dependency, not by calendar. Each phase opens only when the one before it holds.</p>
+      </div>
+      <div class="g4">
+        <div class="phase spot reveal"><div><div class="rank">Phase 01</div><h3 class="name">Signal</h3></div><ul><li>Brand and public presence</li><li>Live market board</li><li>Community channel opens</li></ul></div>
+        <div class="phase featured spot reveal"><span class="ribbon">Current</span><div><div class="rank">Phase 02</div><h3 class="name">Launch</h3></div><ul><li>Token arrives on mainnet</li><li>Contract address published here</li><li>Own line pinned to the board</li></ul></div>
+        <div class="phase spot reveal"><div><div class="rank">Phase 03</div><h3 class="name">Detour</h3></div><ul><li>Private routing alpha</li><li>Lens exposure checker</li><li>Open specification</li></ul></div>
+        <div class="phase spot reveal"><div><div class="rank">Phase 04</div><h3 class="name">Open</h3></div><ul><li>Public tooling for builders</li><li>Outside review of this design</li><li>Governance by holders</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:none">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <div>
+          <span class="sec-kicker">Stay close</span>
+          <h2>Follow the build <span class="serif">from the first block.</span></h2>
+        </div>
+        <div class="cta-actions">
+<!--@cta-x-->
+          <a class="btn btn-ghost" href="#board">Open the board</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div style="max-width:340px">
+        <a class="brand" href="#hero"><img src="assets/img/logo-128.png" alt="Spytrix eye mark" width="44" height="44"><span class="brand-word">Spytrix</span></a>
+        <p class="muted" style="margin:14px 0 0;font-size:14px">Privacy meets Solana payments. Settle in the open, leave your footprint at home.</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col"><h4>On this page</h4><a href="#board">Market</a><a href="#exposure">Exposure</a><a href="#method">Method</a><a href="#phases">Phases</a></div>
+        <div class="footer-col"><h4>Elsewhere</h4>
+<!--@footer-social-->
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>SPYTRIX &middot; MAIN NETWORK</span><span>BUILT FOR PEOPLE WHO PAY QUIETLY</span></div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+<script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
